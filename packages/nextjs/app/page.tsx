@@ -318,7 +318,7 @@ const Home: NextPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="bg-base-100 p-4 rounded-lg">
                 <h3 className="text-lg font-semibold">Total Value</h3>
-                <p className="text-2xl">${totalUsd.toFixed(2)} USD</p>
+                <p className="text-2xl">${formatNumber(totalUsd, 2)} USD</p>
                 {lastUpdated && (
                   <p className="text-xs text-muted mt-1">Last updated: {new Date(lastUpdated).toLocaleString()}</p>
                 )}
@@ -372,8 +372,8 @@ const Home: NextPage = () => {
                   <h3 className="text-lg font-semibold">
                     {token.name} ({token.symbol})
                   </h3>
-                  <p className="text-xl">{token.formatted}</p>
-                  <p className="text-sm">${token.usdValue.toFixed(6)} USD</p>
+                  <p className="text-xl">{formatNumber(token.formatted, 6)}</p>
+                  <p className="text-sm">${formatNumber(token.usdValue, 6)} USD</p>
                   <div className="mt-2 text-xs">
                     <div>
                       Contract: <code className="break-all">{token.address}</code>
@@ -446,4 +446,13 @@ function formatTokenAmount(raw: string, decimals: number, precision = 4): string
     if (isNaN(v)) return "0";
     return v.toFixed(precision);
   }
+}
+
+function formatNumber(value: string | number, maxFractionDigits = 6, minFractionDigits = 0): string {
+  const n = typeof value === "string" ? Number(value.replace(/,/g, "")) : Number(value);
+  if (!isFinite(n)) return String(value);
+  return new Intl.NumberFormat(undefined, {
+    minimumFractionDigits: minFractionDigits,
+    maximumFractionDigits: maxFractionDigits,
+  }).format(n);
 }
