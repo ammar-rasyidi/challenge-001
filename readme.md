@@ -24,6 +24,10 @@ Build a portfolio dashboard that efficiently reads from multiple contracts
 
 This is a frontend-only portfolio dashboard that efficiently reads from multiple token contracts on the Arbitrum Sepolia testnet. It displays balances for popular tokens, calculates total portfolio value in USD, and provides a performance comparison between batched and individual contract calls.
 
+## 🎥 Demo Video
+
+[![Watch the video](https://img.shields.io/badge/Watch-Demo%20Video-blue?logo=youtube)](https://drive.google.com/file/d/1tjKlHDsvcMAJHzPnCJHhzoGPJBEOjryO/view?usp=sharing)
+
 ## Key Features
 
 - **Multi-Token Support**: Displays balances for 6+ popular Arbitrum Sepolia testnet tokens
