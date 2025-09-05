@@ -68,6 +68,33 @@ const superpositionTestnet = defineChain({
   testnet: true,
 });
 
+const ethereumSepolia = defineChain({
+  id: 11155111,
+  name: "Ethereum Sepolia",
+  network: "sepolia",
+  nativeCurrency: {
+    name: "Sepolia Ether",
+    symbol: "ETH",
+    decimals: 18,
+  },
+  rpcUrls: {
+    default: {
+      http: ["https://rpc.sepolia.org"],
+    },
+    public: {
+      http: ["https://rpc.sepolia.org"],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: "Etherscan",
+      url: "https://sepolia.etherscan.io",
+      apiUrl: "https://api-sepolia.etherscan.io/api",
+    },
+  },
+  testnet: true,
+});
+
 export {
   arbitrum,
   arbitrumSepolia,
@@ -77,4 +104,5 @@ export {
   eduChainTestnet,
   superpositionTestnet,
   eduChain,
+  ethereumSepolia,
 };
